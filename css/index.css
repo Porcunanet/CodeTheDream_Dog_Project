@@ -8,13 +8,53 @@ body {
     margin: 0;
 }
 
+.sky {
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #1e528e 0%, #2980b9 100%);
+    z-index: -1; /* Pushes it behind the card */
+}
+
+.cloud {
+    width: 250px;
+    height: 80px;
+    background: #fff;
+    border-radius: 200px;
+    position: absolute;
+    opacity: 0.4;
+    filter: blur(25px);
+    animation: move-clouds linear infinite;
+}
+
+.cloud::after, .cloud::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 100px;
+}
+
+.cloud::after { width: 100px; height: 100px; top: -50px; left: 50px; }
+.cloud::before { width: 120px; height: 120px; top: -70px; left: 20px; }
+
+.cloud-1 { top: 15%; animation-duration: 35s; opacity: 0.3; }
+.cloud-2 { top: 45%; animation-duration: 50s; transform: scale(1.8); opacity: 0.2; }
+.cloud-3 { top: 75%; animation-duration: 25s; transform: scale(1.2); }
+
+@keyframes move-clouds {
+    from { left: -300px; }
+    to { left: 100%; }
+}
+
 .card {
     background: white;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 1000px;
+    max-width: 500px;
     width: 90%;
 }
 
